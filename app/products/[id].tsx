@@ -2,10 +2,11 @@ import { Image } from 'expo-image';
 import { useLocalSearchParams } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
+import { Product } from '.';
 
 export default function ProductDetail() {
   const { id } = useLocalSearchParams();
-  const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState<Product | null>(null);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -27,7 +28,7 @@ export default function ProductDetail() {
               <Image
                 key={image}
                 source={{ uri: image }}
-                style={{ width: 100, height: 100 }}
+                style={{ width: 300, height: 300 }}
               />
             ))}
           </View>

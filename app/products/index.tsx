@@ -3,8 +3,22 @@ import { Link } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { Image } from 'expo-image';
 
+export type Product = {
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  discountPercentage: number;
+  rating: number;
+  stock: number;
+  brand: string;
+  category: string;
+  thumbnail: string;
+  images: string[];
+};
+
 export default function ProductList() {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<{ products: Product[] }>({ products: [] });
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -21,7 +35,27 @@ export default function ProductList() {
         contentContainerStyle={styles.scrollView}
         showsVerticalScrollIndicator={false}
       >
-        {products.products?.map((product) => (
+        <Link
+          href="/products/best-sellers/playstation"
+          style={{
+            fontWeight: 'bold',
+            fontSize: 20,
+            justifyContent: 'center',
+          }}
+        >
+          Распродажа
+        </Link>
+        <Link
+          href="/products/black-friday/playstation"
+          style={{
+            fontWeight: 'bold',
+            fontSize: 20,
+            justifyContent: 'center',
+          }}
+        >
+          Чёрная пятница
+        </Link>
+        {products.products?.map((product: Product) => (
           <Link key={product.id} href={`/products/${product.id}`}>
             <View
               style={{
@@ -52,7 +86,6 @@ export default function ProductList() {
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
