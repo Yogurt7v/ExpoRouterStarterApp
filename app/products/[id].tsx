@@ -2,7 +2,7 @@ import { Image } from 'expo-image';
 import { useLocalSearchParams } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import { Product } from '.';
+import { Product } from '../types/types';
 
 export default function ProductDetail() {
   const { id } = useLocalSearchParams();
@@ -24,7 +24,7 @@ export default function ProductDetail() {
       {product && (
         <View style={{ flexWrap: 'wrap', gap: 10, alignItems: 'center' }}>
           <View style={{ flexDirection: 'row', gap: 10 }}>
-            {product.images.map((image) => (
+            {product.images.map((image: string) => (
               <Image
                 key={image}
                 source={{ uri: image }}

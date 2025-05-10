@@ -2,20 +2,7 @@ import { Text, View, StyleSheet, ScrollView } from 'react-native';
 import { Link } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { Image } from 'expo-image';
-
-export type Product = {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  discountPercentage: number;
-  rating: number;
-  stock: number;
-  brand: string;
-  category: string;
-  thumbnail: string;
-  images: string[];
-};
+import { Product } from '../types/types';
 
 export default function ProductList() {
   const [products, setProducts] = useState<{ products: Product[] }>({ products: [] });
@@ -35,26 +22,28 @@ export default function ProductList() {
         contentContainerStyle={styles.scrollView}
         showsVerticalScrollIndicator={false}
       >
-        <Link
-          href="/products/best-sellers/playstation"
-          style={{
-            fontWeight: 'bold',
-            fontSize: 20,
-            justifyContent: 'center',
-          }}
-        >
-          Распродажа
-        </Link>
-        <Link
-          href="/products/black-friday/playstation"
-          style={{
-            fontWeight: 'bold',
-            fontSize: 20,
-            justifyContent: 'center',
-          }}
-        >
-          Чёрная пятница
-        </Link>
+        <View style={styles.container}>
+          <Link
+            href="/products/best-sellers/playstation"
+            style={{
+              fontWeight: 'bold',
+              fontSize: 20,
+              justifyContent: 'center',
+            }}
+          >
+            Распродажа
+          </Link>
+          <Link
+            href="/products/black-friday/playstation"
+            style={{
+              fontWeight: 'bold',
+              fontSize: 20,
+              justifyContent: 'center',
+            }}
+          >
+            Чёрная пятница
+          </Link>
+        </View>
         {products.products?.map((product: Product) => (
           <Link key={product.id} href={`/products/${product.id}`}>
             <View
@@ -99,7 +88,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   title: {
-    fontSize: 20,
+    fontSize: 30,
+    paddingTop: 20,
     fontWeight: 'bold',
   },
 });

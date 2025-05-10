@@ -8,7 +8,7 @@ export default function Home() {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        gap: 4,
+        gap: 10,
       }}
     >
       <Text>Home Page</Text>
@@ -21,6 +21,9 @@ export default function Home() {
       <Link href="/products" style={styles.link}>
         Products
       </Link>
+      <Link href="/galaxy" style={styles.link}>
+        Not Found Page
+      </Link>
     </View>
   );
 }
@@ -28,5 +31,6 @@ export default function Home() {
 const styles = StyleSheet.create({
   link: {
     color: 'blue',
+    fontSize: 20,
   },
 });
