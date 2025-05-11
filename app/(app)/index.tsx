@@ -37,6 +37,9 @@ const styles = StyleSheet.create({
   link: {
     color: 'blue',
     fontSize: 20,
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',
+    textShadowOffset: { width: 3, height: 3 },
+    textShadowRadius: 2,
   },
   button: {
     backgroundColor: 'blue',
