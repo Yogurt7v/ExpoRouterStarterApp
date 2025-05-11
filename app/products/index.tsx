@@ -21,34 +21,35 @@ export default function ProductList() {
         contentContainerStyle={styles.scrollView}
         showsVerticalScrollIndicator={false}
       >
-        <View style={styles.container}></View>
-        {products.products?.map((product: Product) => (
-          <Link key={product.id} href={`/products/${product.id}`}>
-            <View
-              style={{
-                flexDirection: 'row',
-                gap: 10,
-                alignItems: 'center',
-                padding: 20,
-              }}
-            >
-              <Image
-                source={{ uri: product.thumbnail }}
-                style={{ width: 100, height: 100 }}
-              ></Image>
-              <Text>{product.title}</Text>
-              <Text
+        <View style={styles.content}>
+          {products.products?.map((product: Product) => (
+            <Link key={product.id} href={`/products/${product.id}`}>
+              <View
                 style={{
-                  color: 'green',
-                  fontWeight: 'bold',
-                  fontSize: 16,
+                  flexDirection: 'row',
+                  gap: 10,
+                  alignItems: 'center',
+                  padding: 20,
                 }}
               >
-                {product.price} $
-              </Text>
-            </View>
-          </Link>
-        ))}
+                <Image
+                  source={{ uri: product.thumbnail }}
+                  style={{ width: 100, height: 100 }}
+                ></Image>
+                <Text>{product.title}</Text>
+                <Text
+                  style={{
+                    color: 'green',
+                    fontWeight: 'bold',
+                    fontSize: 16,
+                  }}
+                >
+                  {product.price} $
+                </Text>
+              </View>
+            </Link>
+          ))}
+        </View>
       </ScrollView>
     </View>
   );
@@ -62,8 +63,14 @@ const styles = StyleSheet.create({
     gap: 20,
   },
   scrollView: {
-    width: '100%',
+    flex: 1,
     backgroundColor: 'white',
+  },
+  content: {
+    flex: 1,
+    flexDirection: 'column',
+    width: '100%',
+    alignItems: 'center',
   },
   title: {
     fontSize: 30,

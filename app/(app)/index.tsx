@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, Pressable } from 'react-native';
 import { Link } from 'expo-router';
 
 export default function Home() {
@@ -12,6 +12,9 @@ export default function Home() {
       }}
     >
       <Text>Home Page</Text>
+      <Link href="/login" style={[styles.link, { color: 'green' }]}>
+        Login
+      </Link>
       <Link href="/about" style={styles.link}>
         About
       </Link>
@@ -21,8 +24,10 @@ export default function Home() {
       <Link href="/products" style={styles.link}>
         Products
       </Link>
-      <Link href="/galaxy" style={styles.link}>
-        Not Found Page
+      <Link href="/products/best-sellers/playstation" asChild>
+        <Pressable style={styles.button}>
+          <Text style={styles.buttonText}>Best Sellers</Text>
+        </Pressable>
       </Link>
     </View>
   );
@@ -32,5 +37,18 @@ const styles = StyleSheet.create({
   link: {
     color: 'blue',
     fontSize: 20,
+  },
+  button: {
+    backgroundColor: 'blue',
+    padding: 10,
+    borderRadius: 10,
+    marginTop: 10,
+    width: 100,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
   },
 });
