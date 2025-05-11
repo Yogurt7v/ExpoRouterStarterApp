@@ -1,11 +1,13 @@
-import { Slot } from 'expo-router';
+import { Link, Slot } from 'expo-router';
 import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
 
 export default function RootLayout() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.text}>My First Expo App</Text>
+        <Link href="/" style={styles.text}>
+          My First Expo App
+        </Link>
       </View>
       <Slot />
       <View style={styles.footer}>
@@ -40,5 +42,6 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
     fontFamily: 'Roboto',
+    width: '20%',
   },
 });

@@ -17,33 +17,11 @@ export default function ProductList() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Products</Text>
       <ScrollView
         contentContainerStyle={styles.scrollView}
         showsVerticalScrollIndicator={false}
       >
-        <View style={styles.container}>
-          <Link
-            href="/products/best-sellers/playstation"
-            style={{
-              fontWeight: 'bold',
-              fontSize: 20,
-              justifyContent: 'center',
-            }}
-          >
-            Распродажа
-          </Link>
-          <Link
-            href="/products/black-friday/playstation"
-            style={{
-              fontWeight: 'bold',
-              fontSize: 20,
-              justifyContent: 'center',
-            }}
-          >
-            Чёрная пятница
-          </Link>
-        </View>
+        <View style={styles.container}></View>
         {products.products?.map((product: Product) => (
           <Link key={product.id} href={`/products/${product.id}`}>
             <View
